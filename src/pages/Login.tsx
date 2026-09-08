@@ -23,13 +23,22 @@ function Login() {
       return
     }
 
+    const loginUser = {
+      id: Number(user.id),
+      name: user.name,
+      email: user.email,
+    }
+
     dispatch(
-      login({
-        id: Number(user.id),
-        name: user.name,
-        email: user.email,
-      }),
+      login(loginUser),
     )
+
+    sessionStorage.setItem('user', JSON.stringify(loginUser))
+    // sessionStorage : 브라우저가 제공하는 저장 공간
+    // setItem() : 값을 저장하는 함수
+
+    // sessionStorage에는 객체를 그대로 넣을 수 없으므로
+    // JSON.stringify()를 사용해서 [객체를 문자열 형태로 변환해서 저장]함
 
     navigate('/admin')
   }
