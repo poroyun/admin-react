@@ -16,6 +16,7 @@ function Admin() {
 
   const handleLogout = () => {
     dispatch(logout())
+    sessionStorage.removeItem('user')
     navigate('/login')
   }
 
