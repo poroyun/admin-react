@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
+import { Navigate, useNavigate } from "react-router-dom"
 import type { AppDispatch, RootState } from "../store/store"
-import { useNavigate } from "react-router-dom"
 import { logout } from "../store/slices/authSlice"
 
 function Admin() {
@@ -19,6 +19,10 @@ function Admin() {
     navigate('/login')
   }
 
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />
+  }
+
   return (
     <div>
       <h1>Admin</h1>
@@ -30,3 +34,14 @@ function Admin() {
 }
 
 export default Admin
+
+// useNavigate
+// → "버튼 클릭 같은 동작 후 이동해!"
+// → 함수 방식
+// → navigate('/login')
+
+
+// Navigate
+// → "지금 이 화면 보여줘도 돼?"
+// → 조건부 렌더링 방식
+// → <Navigate to="/login" />
