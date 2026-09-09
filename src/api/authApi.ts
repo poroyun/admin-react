@@ -1,29 +1,16 @@
 import axios from "axios";
-
-export interface LoginRequest {
-  userId: string
-  password: String
-}
-
-export interface LoginResponse {
-  id: number
-  userId: string
-  password: string
-  name: string
-  email: string
-}
+import { API_BASE_URL } from './apiConfig'
+import type { LoginRequest, LoginResponse } from '../types/auth'
 
 export const loginApi = async (data: LoginRequest) => {
   const response = await axios.get<LoginResponse[]>(
-    'http://localhost:3000/users',
+    `${API_BASE_URL}/users`,
     {
       params: {
         userId: data.userId,
       }
     },
   )
-
-  console.log('아이디 조회 결과:', response.data)
 
   const user = response.data[0]
 
