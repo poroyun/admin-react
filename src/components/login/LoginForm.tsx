@@ -16,10 +16,10 @@ function LoginForm({
   onLogin
 }: LoginFormProps) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4">
-      <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-blue-100/50">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 via-white to-violet-50 px-4">
+      <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-10 shadow-xl shadow-violet-100/50">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-blue-500 shadow-md shadow-blue-100/60 ring-1 ring-inset ring-blue-100/50">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-50 to-violet-100 text-violet-500 ring-1 ring-inset ring-violet-100/50">
             <span className="flex items-center justify-center"><Users strokeWidth={2.2} /></span>
           </div>
 
@@ -30,7 +30,7 @@ function LoginForm({
           </p>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           <div>
             <label
               htmlFor="userId"
@@ -47,7 +47,7 @@ function LoginForm({
                 value={userId}
                 onChange={(e) => onUserIdChange(e.target.value)}
                 placeholder="아이디를 입력하세요."
-                className="w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                className="w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
               />
             </div>
           </div>
@@ -55,7 +55,7 @@ function LoginForm({
           <div>
             <label
               htmlFor="password"
-              className="mb-2 block text-sm font-semibold text-slate-700"
+              className="mb-2 block text-sm font-medium text-slate-700"
             >
               비밀번호
             </label>
@@ -68,16 +68,18 @@ function LoginForm({
                 value={password}
                 onChange={(e) => onPasswordChange(e.target.value)}
                 placeholder="비밀번호를 입력하세요."
-                className="w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                className="w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
               />
             </div>
-
           </div>
 
+        </div>
+
+        <div className='mt-8'>
           <button
             type="button"
             onClick={onLogin}
-            className="w-full cursor-pointer rounded-xl bg-blue-500 py-3 font-semibold text-white shadow-md transition-colors hover:bg-blue-600"
+            className="w-full cursor-pointer rounded-xl bg-violet-500 py-3 font-semibold text-white shadow-md transition-colors hover:bg-violet-600"
           >
             로그인
           </button>
