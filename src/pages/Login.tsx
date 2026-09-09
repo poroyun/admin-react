@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { loginApi } from "@/api/authApi"
 import { login } from "@/store/slices/authSlice"
 import type { AppDispatch } from "@/store/store"
+import LoginForm from "@/components/login/LoginForm";
 
 function Login() {
   const [userId, setUserId] = useState('')
@@ -44,30 +45,13 @@ function Login() {
   }
 
   return (
-    <div>
-      <h1>Admin 로그인</h1>
-
-      <div>
-        <label htmlFor="userId">아이디</label>
-        <input
-          id="userId"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="password">비밀번호</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-
-      <button onClick={handleLogin}>로그인</button>
-    </div>
+    <LoginForm
+      userId={userId}
+      onUserIdChange={setUserId}
+      password={password}
+      onPasswordChange={setPassword}
+      onLogin={handleLogin}
+    />
   )
 }
 

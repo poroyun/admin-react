@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Navigate, useNavigate } from "react-router-dom"
 import type { AppDispatch, RootState } from "@/store/store"
 import { logout } from "@/store/slices/authSlice"
+import AdminLayout from "@/components/admin/AdminLayout"
 
 function Admin() {
   // 관리자 정보 가져오기
@@ -25,12 +26,14 @@ function Admin() {
   }
 
   return (
-    <div>
-      <h1>Admin</h1>
-      <p>로그인 상태: {isLoggedIn ? '로그인됨' : '로그아웃됨'}</p>
-      {user && <p>{user.name}님 환영합니다!</p>}
-      <button onClick={handleLogout}>로그아웃</button>
-    </div>
+    <AdminLayout
+      isLoggedIn={isLoggedIn}
+      userName={user?.name ?? ''}
+      // user?.name ?? ''
+      // user가 있으면 → user.name
+      // user가 없으면 → 빈 문자열 ''
+      onLogout={handleLogout}
+    />
   ) 
 }
 
