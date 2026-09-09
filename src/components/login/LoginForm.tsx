@@ -15,7 +15,7 @@ function LoginForm({
 }: LoginFormProps) {
   return (
     <div>
-      <h1>Admin 로그인</h1>
+      <h1 className="text-red-500 font-bold">Admin 로그인</h1>
       <input
         value={userId}
         onChange={(e) => onUserIdChange(e.target.value)}
