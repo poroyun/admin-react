@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_BASE_URL } from './apiConfig'
-import type { LoginRequest, LoginResponse } from '../types/auth'
+import type { LoginRequest, LoginResponse } from '@/types/auth'
 
 export const loginApi = async (data: LoginRequest) => {
   const response = await axios.get<LoginResponse[]>(

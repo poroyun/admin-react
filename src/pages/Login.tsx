@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { loginApi } from "../api/authApi"
-import { login } from "../store/slices/authSlice"
-import type { AppDispatch } from "../store/store"
+import { loginApi } from "@/api/authApi"
+import { login } from "@/store/slices/authSlice"
+import type { AppDispatch } from "@/store/store"
 
 function Login() {
   const [userId, setUserId] = useState('')

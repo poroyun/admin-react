@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Navigate, useNavigate } from "react-router-dom"
-import type { AppDispatch, RootState } from "../store/store"
-import { logout } from "../store/slices/authSlice"
+import type { AppDispatch, RootState } from "@/store/store"
+import { logout } from "@/store/slices/authSlice"
 
 function Admin() {
   // 관리자 정보 가져오기
-  const user = ((state: RootState) => state.auth.user)
+  const user = useSelector((state: RootState) => state.auth.user)
   // 로그인 여부 가져오기
   const isLoggedIn = useSelector(
     (state: RootState) => state.auth.isLoggedIn,
