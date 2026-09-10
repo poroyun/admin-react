@@ -2,10 +2,30 @@
   "users": [
     {
       "id": "1",
+      "name": "관리자",
       "userId": "admin",
       "password": "asdf",
-      "name": "관리자",
-      "email": "admin@example.com"
+      "email": "admin@example.com",
+      "birthDate": "1990-01-01",
+      "joinDate": "2020-03-02"
+    },
+    {
+      "id": "2",
+      "name": "김윤서",
+      "userId": "yunseo",
+      "password": "asdf",
+      "email": "yunseo@example.com",
+      "birthDate": "1994-11-27",
+      "joinDate": "2026-03-02"
+    },
+    {
+      "id": "3",
+      "name": "신수정",
+      "userId": "ssj0828",
+      "password": "asdf",
+      "email": "ssj0828@example.com",
+      "birthDate": "1997-08-28",
+      "joinDate": "2023-07-17"
     }
   ]
 }
