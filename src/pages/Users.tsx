@@ -26,3 +26,20 @@ function Users() {
 }
 
 export default Users
+
+// [사용자 목록]
+// db.json
+//   ↓
+// json-server
+//   ↓
+// getUsersApi()
+//   ↓
+// Users.tsx
+//   ↓
+// useState<User[]>
+//   ↓
+// <UserList users={users} />
+//   ↓
+// users.map()
+//   ↓
+// 사용자 목록 출력
