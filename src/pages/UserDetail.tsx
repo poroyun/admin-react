@@ -1,11 +1,36 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getUserApi } from '@/api/userApi'
-import type { User } from '@/types/user'
+import { useNavigate, useParams } from 'react-router-dom'
+import { getUserApi, updateUserApi } from '@/api/userApi'
+import UserForm from '@/components/users/UserForm'
 
 function UserDetail() {
   const { id } = useParams()
-  const [user, setUser] = useState<User | null>(null)
+  const [name, setName] = useState('')
+  const [userId, setUserId] = useState('')
+  const [email, setEmail] = useState('')
+  const [birthDate, setBirthDate] = useState('')
+  const [joinDate, setJoinDate] = useState('')
+
+  const navigate = useNavigate()
+
+  const handleCancel = () => {
+    navigate('/admin/users')
+  }
+
+  const handleSubmit = async () => {
+    if (!id) {
+      return
+    }
+
+    await updateUserApi(id, {
+      name,
+      email,
+      birthDate,
+      joinDate
+    })
+    alert('사용자 정보가 수정되었습니다.')
+    navigate('/admin/users')
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -14,7 +39,11 @@ function UserDetail() {
       }
 
       const data = await getUserApi(id)
-      setUser(data)
+      setName(data.name)
+      setUserId(data.userId)
+      setEmail(data.email)
+      setBirthDate(data.birthDate)
+      setJoinDate(data.joinDate)
     }
 
     fetchUser()
@@ -22,35 +51,31 @@ function UserDetail() {
 
   return (
     <div>
-      <h1>사용자 상세</h1>
-
       <div>
-        <dl>
-          <dt>이름</dt>
-          <dd>{user?.name}</dd>
-        </dl>
-        <dl>
-          <dt>아이디</dt>
-          <dd>{user?.userId}</dd>
-        </dl>
-        <dl>
-          <dt>이메일</dt>
-          <dd>{user?.email}</dd>
-        </dl>
-        <dl>
-          <dt>생년월일</dt>
-          <dd>{user?.birthDate}</dd>
-        </dl>
-        <dl>
-          <dt>입사일</dt>
-          <dd>{user?.joinDate}</dd>
-        </dl>
+        <div>
+          <h1>
+            사용자 상세
+          </h1>
+        </div>
+
+        <UserForm
+          name={name}
+          userId={userId}
+          email={email}
+          birthDate={birthDate}
+          joinDate={joinDate}
+          onNameChange={setName}
+          onUserIdChange={setUserId}
+          onEmailChange={setEmail}
+          onBirthDateChange={setBirthDate}
+          onJoinDateChange={setJoinDate}
+          onCancel={handleCancel}
+          onSubmit={handleSubmit}
+          submitLabel="수정"
+          isEdit={true}
+        />
+
       </div>
-      {/* <p>이름: {user?.name}</p>
-      <p>아이디: {user?.userId}</p>
-      <p>이메일: {user?.email}</p>
-      <p>생년월일: {user?.birthDate}</p>
-      <p>입사일: {user?.joinDate}</p> */}
     </div>
   )
 }

@@ -14,8 +14,8 @@
       "name": "김윤서",
       "userId": "yunseo",
       "password": "asdf",
-      "email": "yunseo@example.com",
-      "birthDate": "1994-11-27",
+      "email": "yunseo1@example.com",
+      "birthDate": "1994-11-29",
       "joinDate": "2026-03-02"
     },
     {
@@ -27,5 +27,6 @@
       "birthDate": "1997-08-28",
       "joinDate": "2023-07-17"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
