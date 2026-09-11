@@ -47,7 +47,7 @@ function LoginForm({
                 value={userId}
                 onChange={(e) => onUserIdChange(e.target.value)}
                 placeholder="아이디를 입력하세요."
-                className="w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
+                className="h-12 w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
               />
             </div>
           </div>
@@ -68,7 +68,7 @@ function LoginForm({
                 value={password}
                 onChange={(e) => onPasswordChange(e.target.value)}
                 placeholder="비밀번호를 입력하세요."
-                className="w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
+                className="h-12 w-full rounded-xl border border-slate-300 py-3 pl-12 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
               />
             </div>
           </div>

@@ -26,7 +26,7 @@ function UserDetail() {
       name,
       email,
       birthDate,
-      joinDate
+      joinDate,
     })
     alert('사용자 정보가 수정되었습니다.')
     navigate('/admin/users')
@@ -50,12 +50,15 @@ function UserDetail() {
   }, [id])
 
   return (
-    <div>
-      <div>
-        <div>
-          <h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50 px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="mb-8">
+          <h1 className="mb-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             사용자 상세
           </h1>
+          <p className="text-sm leading-relaxed text-slate-500">
+            사용자 정보를 확인하고 수정합니다.
+          </p>
         </div>
 
         <UserForm
@@ -74,7 +77,6 @@ function UserDetail() {
           submitLabel="수정"
           isEdit={true}
         />
-
       </div>
     </div>
   )
