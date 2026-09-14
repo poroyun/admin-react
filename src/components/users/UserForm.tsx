@@ -1,3 +1,25 @@
+import { useState } from "react"
+import { DatePicker } from "@/components/common/date-picker/DatePicker"
+import { DateRangePicker } from "../common/date-picker/DateRangePicker"
+
+// 날짜 String -> 객체로 변경
+const parseDate = (value: string): Date | null => {
+  if (!value) return null
+  
+  const [year, month, day] = value.split('-').map(Number)
+  
+  return new Date(year, month - 1, day)
+}
+
+// 날짜 객체 -> String으로 변경
+const formatDate = (date: Date): string => {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  return `${year}-${month}-${day}`
+}
+
 interface UserFormProps {
   name: string
   userId: string
@@ -31,6 +53,7 @@ function UserForm({
   submitLabel,
   isEdit = false,
 }: UserFormProps) {
+  
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/40 sm:p-8">
       <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
@@ -93,12 +116,12 @@ function UserForm({
           >
             생년월일
           </label>
-          <input
-            className="h-12 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-4 py-2 text-base text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500"
-            id="birthDate"
-            type="text"
-            value={birthDate}
-            onChange={(e) => onBirthDateChange(e.target.value)}
+          <DatePicker
+            mode="date"
+            value={parseDate(birthDate)}
+            onChange={(date) => {
+              onBirthDateChange(date ? formatDate(date) : '')
+            }}
           />
         </div>
 
@@ -109,12 +132,12 @@ function UserForm({
           >
             입사일
           </label>
-          <input
-            className="h-12 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-4 py-2 text-base text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500"
-            id="joinDate"
-            type="text"
-            value={joinDate}
-            onChange={(e) => onJoinDateChange(e.target.value)}
+          <DatePicker
+            mode="date"
+            value={parseDate(joinDate)}
+            onChange={(date) => {
+              onJoinDateChange(date ? formatDate(date) : '')
+            }}
           />
         </div>
       </div>
