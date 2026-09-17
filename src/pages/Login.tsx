@@ -7,6 +7,7 @@ import type { AppDispatch } from "@/store/store"
 import LoginForm from "@/components/login/LoginForm";
 
 function Login() {
+  // useState : 컴포넌트가 어떤 값을 기억하게 해주는 React 기능
   const [userId, setUserId] = useState('')
   const [password, setPassword] = useState('')
 

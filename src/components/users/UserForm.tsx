@@ -1,6 +1,4 @@
-import { useState } from "react"
 import { DatePicker } from "@/components/common/date-picker/DatePicker"
-import { DateRangePicker } from "../common/date-picker/DateRangePicker"
 
 // 날짜 String -> 객체로 변경
 const parseDate = (value: string): Date | null => {

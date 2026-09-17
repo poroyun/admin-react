@@ -28,5 +28,56 @@
       "joinDate": "2023-07-17"
     }
   ],
+  "codes": [
+    {
+      "id": "1",
+      "code": "USER_STATUS",
+      "name": "회원상태",
+      "parentId": null,
+      "description": "회원 상태 코드"
+    },
+    {
+      "id": "2",
+      "code": "ACTIVE",
+      "name": "정상",
+      "parentId": "1",
+      "description": "정상 회원"
+    },
+    {
+      "id": "3",
+      "code": "DORMANT",
+      "name": "휴면",
+      "parentId": "1",
+      "description": "휴면 회원"
+    },
+    {
+      "id": "4",
+      "code": "WITHDRAWN",
+      "name": "탈퇴",
+      "parentId": "1",
+      "description": "탈퇴 회원"
+    },
+    {
+      "id": "5",
+      "code": "USER_ROLE",
+      "name": "사용자권한",
+      "parentId": null,
+      "description": "사용자 권한 코드"
+    },
+    {
+      "id": "6",
+      "code": "ADMIN",
+      "name": "관리자",
+      "parentId": "5",
+      "description": "관리자 권한"
+    },
+    {
+      "id": "7",
+      "code": "USER",
+      "name": "일반사용자",
+      "parentId": "5",
+      "description": "일반 사용자 권한"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

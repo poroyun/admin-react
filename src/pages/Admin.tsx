@@ -5,7 +5,8 @@ import { logout } from "@/store/slices/authSlice"
 import AdminLayout from "@/components/admin/AdminLayout"
 
 function Admin() {
-  // 관리자 정보 가져오기
+  // useSelector : Redux Store에 있는 state를 가져와서 사용
+  // 사용자 정보 가져오기
   const user = useSelector((state: RootState) => state.auth.user)
   // 로그인 여부 가져오기
   const isLoggedIn = useSelector(
