@@ -4,11 +4,17 @@ import './index.css'
 import App from './App.tsx'
 import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
+import { StyledEngineProvider } from '@mui/material/styles'
+import GlobalStyles from '@mui/material/GlobalStyles'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <StyledEngineProvider enableCssLayer>
+      <GlobalStyles styles="@layer theme, base, mui, components, utilities;" />
+      
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </StyledEngineProvider>
   </StrictMode>,
 )
