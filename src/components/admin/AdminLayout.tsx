@@ -1,26 +1,60 @@
-interface AdminLayoutProps {
-  isLoggedIn: boolean
-  userName: string
-  onLogout: () => void
-}
+import { Navigate, Outlet, useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import type { AppDispatch, RootState } from "@/store/store"
+import { logout } from "@/store/slices/authSlice"
+import AdminSidebar from "./AdminSidebar"
+import AdminHeader from "./AdminHeader"
 
-function AdminLayout({
-  isLoggedIn,
-  userName,
-  onLogout
-}: AdminLayoutProps) {
+function AdminLayout() {
+  // useSelector : Redux Store에 있는 state를 가져와서 사용
+  // 사용자 정보 가져오기
+  const user = useSelector((state: RootState) => state.auth.user)
+  // 로그인 여부 가져오기
+  const isLoggedIn = useSelector(
+    (state: RootState) => state.auth.isLoggedIn,
+  )
+
+  const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    dispatch(logout())
+    sessionStorage.removeItem('user')
+    navigate('/login')
+  }
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />
+  }
+
   return (
-    <div>
-      <div>
-        <h1>Admin</h1>
-        <p>로그인 상태: {isLoggedIn ? '로그인됨' : '로그아웃됨'}</p>
+    <div className="flex min-h-screen">
+      <AdminSidebar />
+
+      <div className="flex flex-1 flex-col">
+        <AdminHeader
+          userName={user?.name ?? '사용자'}
+          onLogout={handleLogout}
+        />
+
+        <main className="flex-1 bg-slate-50 p-6">
+          <Outlet/>
+        </main>
       </div>
-      <div>
-        <p>{userName}님 환영합니다!</p>
-        <button onClick={onLogout}>로그아웃</button>
-      </div>
+
     </div>
   )
 }
 
 export default AdminLayout
+
+// useNavigate
+// → "버튼 클릭 같은 동작 후 이동해!"
+// → 함수 방식
+// → navigate('/login')
+
+
+// Navigate
+// → "지금 이 화면 보여줘도 돼?"
+// → 조건부 렌더링 방식
+// → <Navigate to="/login" />
