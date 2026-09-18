@@ -1,5 +1,7 @@
+import { List, ListItemButton, ListItemText, ListItemIcon } from "@mui/material"
 import { useLocation, useNavigate } from "react-router-dom"
-
+import PeopleIcon from '@mui/icons-material/People'
+import AccountTreeIcon from '@mui/icons-material/AccountTree'
 
 function AdminSidebar() {
 
@@ -13,21 +15,33 @@ function AdminSidebar() {
         <h1 className="text-xl font-bold">Admin</h1>
       </div>
 
-      <nav className="flex flex-col gap-2 p-4">
-        <button
-          className={`h-10 rounded-md px-3 text-left ${
-            isUsersActive
-              ? 'bg-slate-100 font-semibold'
-              : 'hover:bg-slate-50'
-          }`}
-          onClick={() => navigate('/admin/users')}
+      <nav className="p-4">
+        <List
+          disablePadding
+          sx={{
+            display: "flex",
+            flexDirection: 'column',
+            gap: 0.5,
+          }}
         >
-          사용자 관리
-        </button>
-
-        <button className="h-10 rounded-md px-3 text-left">
-          코드 관리
-        </button>
+          <ListItemButton
+            selected={isUsersActive}
+            onClick={() => navigate('/admin/users')}
+            sx={{borderRadius: 1}}
+          >
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="사용자 관리" />
+          </ListItemButton>
+          
+          <ListItemButton sx={{borderRadius: 1}}>
+            <ListItemIcon>
+              <AccountTreeIcon />
+            </ListItemIcon>
+            <ListItemText primary="코드 관리" />
+          </ListItemButton>
+        </List>
       </nav>
     </aside>
   )

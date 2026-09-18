@@ -1,4 +1,4 @@
-import Button from '@mui/material/Button'
+import { Avatar, Button } from '@mui/material'
 
 interface AdminHeaderProps {
   userName: string
@@ -11,6 +11,14 @@ function AdminHeader({
 }: AdminHeaderProps) {
   return (
     <header className="flex h-16 items-center justify-end gap-4 border-b border-slate-200 bg-white px-6">
+      <Avatar
+        sx={{
+          width: 32,
+          height: 32,
+        }}
+      >
+        {userName.charAt(0)}
+      </Avatar>
       <p>{userName}님 환영합니다!</p>
       <Button
         variant="outlined"
