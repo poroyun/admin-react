@@ -37,7 +37,7 @@ function AdminLayout() {
           onLogout={handleLogout}
         />
 
-        <main className="flex-1 bg-slate-50 p-6">
+        <main className="flex-1 bg-slate-50 px-4 py-8 sm:px-10 sm:py-12">
           <Outlet/>
         </main>
       </div>

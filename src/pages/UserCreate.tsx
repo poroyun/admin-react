@@ -2,6 +2,7 @@ import { useState } from 'react'
 import UserForm from '@/components/users/UserForm'
 import { createUserApi } from '@/api/userApi'
 import { useNavigate } from 'react-router-dom'
+import PageHeader from '@/components/common/page-header/PageHeader'
 
 function UserCreate() {
   const [name, setName] = useState('')
@@ -28,16 +29,12 @@ function UserCreate() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50 px-4 py-8 sm:px-6 sm:py-12">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-6">
-          <h1 className="mb-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            사용자 등록
-          </h1>
-          <p className="text-sm leading-relaxed text-slate-500">
-            새로운 사용자 정보를 등록합니다.
-          </p>
-        </div>
+    <div className="min-h-screen">
+      <div className="mx-auto w-full">
+        <PageHeader
+          title="사용자 등록"
+          description="새로운 사용자 정보를 등록합니다."
+        />
 
         <UserForm
           name={name}

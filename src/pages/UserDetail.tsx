@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getUserApi, updateUserApi } from '@/api/userApi'
 import UserForm from '@/components/users/UserForm'
+import PageHeader from '@/components/common/page-header/PageHeader'
 
 function UserDetail() {
   const { id } = useParams()
@@ -50,16 +51,13 @@ function UserDetail() {
   }, [id])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50 px-4 py-8 sm:px-6 sm:py-12">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-8">
-          <h1 className="mb-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            사용자 상세
-          </h1>
-          <p className="text-sm leading-relaxed text-slate-500">
-            사용자 정보를 확인하고 수정합니다.
-          </p>
-        </div>
+    <div className="min-h-screen">
+      <div className="mx-auto w-full">
+        
+        <PageHeader
+          title="사용자 상세"
+          description="사용자 정보를 확인하고 수정합니다."
+        />
 
         <UserForm
           name={name}
@@ -99,6 +97,6 @@ export default UserDetail
 //   ↓
 // 사용자 한 명 조회
 //   ↓
-// useState<User | null>
+// 각 사용자 정보를 state에 저장
 //   ↓
-// 상세 정보 출력
+// UserForm에 props로 전달

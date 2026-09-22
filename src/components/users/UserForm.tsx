@@ -1,22 +1,6 @@
+import { Button, TextField } from "@mui/material"
 import { DatePicker } from "@/components/common/date-picker/DatePicker"
-
-// 날짜 String -> 객체로 변경
-const parseDate = (value: string): Date | null => {
-  if (!value) return null
-  
-  const [year, month, day] = value.split('-').map(Number)
-  
-  return new Date(year, month - 1, day)
-}
-
-// 날짜 객체 -> String으로 변경
-const formatDate = (date: Date): string => {
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-
-  return `${year}-${month}-${day}`
-}
+import dayjs from 'dayjs'
 
 interface UserFormProps {
   name: string
@@ -51,110 +35,82 @@ function UserForm({
   submitLabel,
   isEdit = false,
 }: UserFormProps) {
-  
+
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/40 sm:p-8">
       <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
-        <div className="min-w-0 space-y-2">
-          <label
-            className="block text-sm font-semibold text-slate-700"
-            htmlFor="name"
-          >
-            이름
-          </label>
-          <input
-            className="h-12 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-4 py-2 text-base text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500"
+        <div className="min-w-0">
+          <TextField
             id="name"
+            label="이름"
             placeholder="이름을 입력하세요."
-            type="text"
             value={name}
             onChange={(e) => onNameChange(e.target.value)}
+            fullWidth
           />
         </div>
 
-        <div className="min-w-0 space-y-2">
-          <label
-            className="block text-sm font-semibold text-slate-700"
-            htmlFor="userId"
-          >
-            아이디
-          </label>
-          <input
-            className="h-12 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-4 py-2 text-base text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500"
+        <div className="min-w-0">
+          <TextField
             id="userId"
+            label="아이디"
             placeholder="아이디를 입력하세요."
-            type="text"
             value={userId}
             onChange={(e) => onUserIdChange(e.target.value)}
             disabled={isEdit}
+            fullWidth
           />
         </div>
 
-        <div className="min-w-0 space-y-2 sm:col-span-2">
-          <label
-            className="block text-sm font-semibold text-slate-700"
-            htmlFor="email"
-          >
-            이메일
-          </label>
-          <input
-            className="h-12 w-full min-w-0 rounded-xl border border-slate-300 bg-white px-4 py-2 text-base text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-violet-500 focus:ring-4 focus:ring-violet-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-500"
+        <div className="min-w-0 sm:col-span-2">
+          <TextField
             id="email"
+            label="이메일"
             placeholder="이메일을 입력하세요."
-            type="text"
             value={email}
             onChange={(e) => onEmailChange(e.target.value)}
+            fullWidth
           />
         </div>
 
-        <div className="min-w-0 space-y-2">
-          <label
-            className="block text-sm font-semibold text-slate-700"
-            htmlFor="birthDate"
-          >
-            생년월일
-          </label>
+        <div className="min-w-0">
           <DatePicker
-            mode="date"
-            value={parseDate(birthDate)}
+            label="생년월일"
+            value={birthDate ? dayjs(birthDate) : null}
             onChange={(date) => {
-              onBirthDateChange(date ? formatDate(date) : '')
+              onBirthDateChange(date ? date.format("YYYY-MM-DD") : '')
             }}
+            fullWidth
           />
         </div>
 
-        <div className="min-w-0 space-y-2">
-          <label
-            className="block text-sm font-semibold text-slate-700"
-            htmlFor="joinDate"
-          >
-            입사일
-          </label>
+        <div className="min-w-0">
           <DatePicker
-            mode="date"
-            value={parseDate(joinDate)}
+            label="입사일"
+            value={joinDate ? dayjs(joinDate) : null}
             onChange={(date) => {
-              onJoinDateChange(date ? formatDate(date) : '')
+              onJoinDateChange(date ? date.format("YYYY-MM-DD") : '')
             }}
+            fullWidth
           />
         </div>
       </div>
 
       <div className="mt-8 flex flex-col gap-2 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end">
-        <button
-          className="h-10 cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+        <Button
+          variant="outlined"
           type="button"
           onClick={onCancel}
         >
           취소
-        </button>
-        <button
-          className="h-10 cursor-pointer rounded-xl bg-violet-500 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-violet-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+        </Button>
+        <Button
+          variant="contained"
           type="button"
           onClick={onSubmit}
         >
           {submitLabel}
-        </button>
+        </Button>
       </div>
     </div>
   )
