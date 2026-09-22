@@ -6,10 +6,13 @@ import { login } from "@/store/slices/authSlice"
 import type { AppDispatch } from "@/store/store"
 import LoginForm from "@/components/login/LoginForm";
 
+
 function Login() {
   // useState : 컴포넌트가 어떤 값을 기억하게 해주는 React 기능
   const [userId, setUserId] = useState('')
   const [password, setPassword] = useState('')
+
+  const [alertOpen, setAlertOpen] = useState(false)
 
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
@@ -21,7 +24,7 @@ function Login() {
     })
 
     if (!user) {
-      alert('아이디 또는 비밀번호가 일치하지 않습니다.')
+      setAlertOpen(true)
       return
     }
 
@@ -46,13 +49,16 @@ function Login() {
   }
 
   return (
-    <LoginForm
-      userId={userId}
-      onUserIdChange={setUserId}
-      password={password}
-      onPasswordChange={setPassword}
-      onLogin={handleLogin}
-    />
+    <>
+      <LoginForm
+        userId={userId}
+        onUserIdChange={setUserId}
+        password={password}
+        onPasswordChange={setPassword}
+        onLogin={handleLogin}
+        loginError={alertOpen}
+      />
+    </>
   )
 }
 

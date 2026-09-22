@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { getUserApi, updateUserApi } from '@/api/userApi'
 import UserForm from '@/components/users/UserForm'
 import PageHeader from '@/components/common/page-header/PageHeader'
+import AppAlert from '@/components/common/alert/AppAlert'
 
 function UserDetail() {
   const { id } = useParams()
@@ -11,6 +12,7 @@ function UserDetail() {
   const [email, setEmail] = useState('')
   const [birthDate, setBirthDate] = useState('')
   const [joinDate, setJoinDate] = useState('')
+  const [alertOpen, setAlertOpen] = useState(false)
 
   const navigate = useNavigate()
 
@@ -29,8 +31,7 @@ function UserDetail() {
       birthDate,
       joinDate,
     })
-    alert('사용자 정보가 수정되었습니다.')
-    navigate('/admin/users')
+    setAlertOpen(true)
   }
 
   useEffect(() => {
@@ -58,6 +59,19 @@ function UserDetail() {
           title="사용자 상세"
           description="사용자 정보를 확인하고 수정합니다."
         />
+
+        {alertOpen && (
+          <div className="mb-6">
+            <AppAlert
+              message='사용자 정보가 수정되었습니다.'
+              severity='success'
+              onClose={() => {
+                setAlertOpen(false)
+                // navigate('/admin/users')
+              }}
+            />
+          </div>
+        )}
 
         <UserForm
           name={name}

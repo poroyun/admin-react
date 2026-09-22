@@ -5,6 +5,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import PeopleIcon from '@mui/icons-material/People'
 import { useState } from 'react'
+import AppAlert from "@/components/common/alert/AppAlert"
 
 interface LoginFormProps {
   userId: string
@@ -12,6 +13,7 @@ interface LoginFormProps {
   onUserIdChange: (value: string) => void
   onPasswordChange: (value: string) => void
   onLogin: () => void
+  loginError: boolean
 }
 
 function LoginForm({
@@ -19,7 +21,8 @@ function LoginForm({
   password,
   onUserIdChange,
   onPasswordChange,
-  onLogin
+  onLogin,
+  loginError
 }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false)
 
@@ -89,6 +92,13 @@ function LoginForm({
               }
             }}
           />
+
+          {loginError && (
+            <AppAlert
+              message='아이디 또는 비밀번호가 일치하지 않습니다.'
+              severity='error'
+            />
+          )}
 
         </div>
 
