@@ -8,17 +8,20 @@ import { StyledEngineProvider } from '@mui/material/styles'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import AppThemeProvider from './theme/AppThemeProvider'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <StyledEngineProvider enableCssLayer>
       <GlobalStyles styles="@layer theme, base, mui, components, utilities;" />
       
-      <Provider store={store}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <App />
-        </LocalizationProvider>
-      </Provider>
+      <AppThemeProvider>
+        <Provider store={store}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <App />
+          </LocalizationProvider>
+        </Provider>
+      </AppThemeProvider>
     </StyledEngineProvider>
   </StrictMode>,
 )

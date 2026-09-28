@@ -1,4 +1,4 @@
-import { List, ListItemButton, ListItemText, ListItemIcon } from "@mui/material"
+import { List, ListItemButton, ListItemText, ListItemIcon, Box } from "@mui/material"
 import { useLocation, useNavigate } from "react-router-dom"
 import PeopleIcon from '@mui/icons-material/People'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
@@ -10,10 +10,24 @@ function AdminSidebar() {
 
   const isUsersActive = location.pathname.startsWith('/admin/users')
   return (
-    <aside className="min-h-screen w-50 shrink-0 border-r border-slate-200 bg-white">
-      <div className="flex h-16 items-center border-b border-slate-200 px-6">
+    <Box
+      component="aside"
+      className="min-h-screen w-50 shrink-0"
+      sx={{
+        bgcolor: "background.paper",
+        borderRight: 1,
+        borderColor: "divider",
+      }}
+    >
+      <Box
+        className="flex h-16 items-center px-6"
+        sx={{
+          borderBottom: 1,
+          borderColor: "divider"
+        }}
+      >
         <h1 className="text-xl font-bold">Admin</h1>
-      </div>
+      </Box>
 
       <nav className="p-4">
         <List
@@ -43,7 +57,7 @@ function AdminSidebar() {
           </ListItemButton>
         </List>
       </nav>
-    </aside>
+    </Box>
   )
 }
 

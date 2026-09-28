@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material"
+import { Box, Button, TextField } from "@mui/material"
 import { DatePicker } from "@/components/common/date-picker/DatePicker"
 import dayjs from 'dayjs'
 
@@ -37,7 +37,14 @@ function UserForm({
 }: UserFormProps) {
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/40 sm:p-8">
+    <Box
+      className="rounded-3xl p-6 sm:p-8"
+      sx={{
+        bgcolor: "background.paper",
+        border: 1,
+        borderColor: "divider",
+      }}
+    >
       <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
         <div className="min-w-0">
           <TextField
@@ -96,7 +103,13 @@ function UserForm({
         </div>
       </div>
 
-      <div className="mt-8 flex flex-col gap-2 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end">
+      <Box
+        className="mt-8 flex flex-col gap-2 pt-6 sm:flex-row sm:justify-end"
+        sx={{
+          borderTop: 1,
+          borderColor: "divider",
+        }}
+      >
         <Button
           variant="outlined"
           type="button"
@@ -111,8 +124,8 @@ function UserForm({
         >
           {submitLabel}
         </Button>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

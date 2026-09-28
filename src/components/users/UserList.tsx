@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import type { User } from '@/types/user'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 
 interface UserListProps {
   users: User[]
@@ -10,7 +10,14 @@ function UserList({ users }: UserListProps) {
   const navigate = useNavigate()
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg shadow-slate-200/40">
+    <Box
+      className="overflow-hidden rounded-3xl"
+      sx={{
+        bgcolor: "background.paper",
+        border: 1,
+        borderColor: "divider",
+      }}
+    >
       <TableContainer>
         <Table>
           <TableHead>
@@ -40,7 +47,7 @@ function UserList({ users }: UserListProps) {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </Box>
   )
 }
 

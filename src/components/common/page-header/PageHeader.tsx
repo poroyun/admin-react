@@ -8,6 +8,7 @@
 //    ├─ 안내문
 //    └─ 그 외 필요한 UI
 
+import { Typography } from "@mui/material";
 import type { ReactNode } from "react";
 
 interface PageHeaderProps {
@@ -24,12 +25,27 @@ function PageHeader({
   return (
     <div className="mb-6 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h1 className="mb-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+        <Typography
+          variant="h4"
+          component="h1"
+          sx={{
+            fontWeight: 700,
+            mb: 2
+          }}
+        >
           {title}
-        </h1>
-        <p className="text-sm leading-relaxed text-slate-500">
-          {description}
-        </p>
+        </Typography>
+        {description && (
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              mt: 1
+            }}
+          >
+            {description}
+          </Typography>
+        )}
       </div>
       {children}
     </div>

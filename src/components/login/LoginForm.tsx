@@ -1,4 +1,4 @@
-import { Button, IconButton, InputAdornment, TextField } from '@mui/material'
+import { Box, Button, IconButton, InputAdornment, TextField, Typography } from '@mui/material'
 import PersonIcon from '@mui/icons-material/Person'
 import LockIcon from '@mui/icons-material/Lock'
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -27,8 +27,20 @@ function LoginForm({
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 via-white to-violet-50 px-4">
-      <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-10 shadow-xl shadow-violet-100/50">
+    <Box
+      className="flex min-h-screen items-center justify-center px-4"
+      sx={{
+        bgcolor: 'background.default',
+      }}
+    >
+      <Box
+        className="w-full max-w-md rounded-3xl p-10"
+        sx={{
+          bgcolor: 'background.paper',
+          border: 1,
+          borderColor: 'divider',
+        }}
+      >
         <div className="mb-8 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-50 to-violet-100 text-violet-500 ring-1 ring-inset ring-violet-100/50">
             <span className="flex items-center justify-center">
@@ -36,11 +48,25 @@ function LoginForm({
             </span>
           </div>
 
-          <h1 className="text-3xl font-bold text-slate-900">Admin</h1>
+          <Typography
+            variant='h4'
+            component='h1'
+            sx={{
+              fontWeight: 700,
+            }}
+          >
+            Admin
+          </Typography>
 
-          <p className="mt-2 text-sm text-slate-500">
+          <Typography
+            variant='body2'
+            color='text.secondary'
+            sx={{
+              mt: 1,
+            }}
+          >
             관리자 계정으로 로그인하세요.
-          </p>
+          </Typography>
         </div>
 
         <div className="space-y-4">
@@ -114,8 +140,8 @@ function LoginForm({
           </Button>
         </div>
 
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

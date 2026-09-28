@@ -1,4 +1,9 @@
-import { Avatar, Button } from '@mui/material'
+import { useContext } from 'react'
+import { ThemeModeContext } from '@/theme/AppThemeProvider'
+import { Avatar, Box, Button, IconButton } from '@mui/material'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import LightModeIcon from '@mui/icons-material/LightMode'
+
 
 interface AdminHeaderProps {
   userName: string
@@ -9,8 +14,29 @@ function AdminHeader({
   userName,
   onLogout
 }: AdminHeaderProps) {
+  const themeMode = useContext(ThemeModeContext)
+
+  if(!themeMode) {
+    return null
+  }
+
+  const { mode, toggleMode } = themeMode
   return (
-    <header className="flex h-16 items-center justify-end gap-4 border-b border-slate-200 bg-white px-6">
+    <Box
+      component="header"
+      className="flex h-16 items-center justify-end gap-4 px-6"
+      sx={{
+        bgcolor: "background.paper",
+        borderBottom: 1,
+        borderColor: "divider"
+      }}
+    >
+      <IconButton
+        onClick={toggleMode}
+        aria-label="다크모드 전환"
+      >
+        {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
+      </IconButton>
       <Avatar
         sx={{
           width: 32,
@@ -26,7 +52,7 @@ function AdminHeader({
         onClick={onLogout}>
           로그아웃
         </Button>
-    </header>
+    </Box>
   )
 }
 

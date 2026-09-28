@@ -4,6 +4,7 @@ import type { AppDispatch, RootState } from "@/store/store"
 import { logout } from "@/store/slices/authSlice"
 import AdminSidebar from "./AdminSidebar"
 import AdminHeader from "./AdminHeader"
+import { Box } from "@mui/material"
 
 function AdminLayout() {
   // useSelector : Redux Store에 있는 state를 가져와서 사용
@@ -37,9 +38,15 @@ function AdminLayout() {
           onLogout={handleLogout}
         />
 
-        <main className="flex-1 bg-slate-50 px-4 py-8 sm:px-10 sm:py-12">
+        <Box
+          component="main"
+          className="flex-1 px-4 py-8 sm:px-10 sm:py-12"
+          sx={{
+            bgcolor: "background.default"
+          }}
+        >
           <Outlet/>
-        </main>
+        </Box>
       </div>
 
     </div>
