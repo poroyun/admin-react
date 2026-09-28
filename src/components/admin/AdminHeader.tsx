@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ThemeModeContext } from '@/theme/AppThemeProvider'
+import { ThemeModeContext } from '@/theme/ThemeModeContext'
 import { Avatar, Box, Button, IconButton } from '@mui/material'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
