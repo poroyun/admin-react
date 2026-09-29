@@ -1,10 +1,11 @@
-import axios from "axios";
-import { API_BASE_URL } from './apiConfig'
 import type { LoginRequest, LoginResponse } from '@/types/auth'
+import axiosInstance from './axiosInstance'
 
-export const loginApi = async (data: LoginRequest) => {
-  const response = await axios.get<LoginResponse[]>(
-    `${API_BASE_URL}/users`,
+export const loginApi = async (
+  data: LoginRequest,
+): Promise<LoginResponse | undefined> => {
+  const response = await axiosInstance.get<LoginResponse[]>(
+    '/users',
     {
       params: {
         userId: data.userId,
