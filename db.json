@@ -26,6 +26,14 @@
       "email": "ssj0828@example.com",
       "birthDate": "1997-08-28",
       "joinDate": "2023-07-17"
+    },
+    {
+      "name": "김동호",
+      "userId": "quedevel",
+      "email": "quedevel@peachmind.co.kr",
+      "birthDate": "1990-10-05",
+      "joinDate": "2024-02-13",
+      "id": "lcQLWkkjObU"
     }
   ],
   "codes": [
