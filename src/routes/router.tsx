@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Admin from "@/pages/Admin";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { authRoutes } from "./authRoutes";
-import { userRountes } from "./userRoutes";
+import { userRoutes } from "./userRoutes";
+import { codeRouters } from "./codeRoutes";
 import NotFoundRedirect from "./notFoundRedirect";
 
 export const router = createBrowserRouter([
@@ -16,7 +17,8 @@ export const router = createBrowserRouter([
         index: true,
         element: <Admin />,
       },
-      ...userRountes
+      ...userRoutes,
+      ...codeRouters,
     ],
   },
   {

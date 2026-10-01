@@ -9,6 +9,7 @@ function AdminSidebar() {
   const location = useLocation()
 
   const isUsersActive = location.pathname.startsWith('/admin/users')
+  const isCodesActive = location.pathname.startsWith('/admin/codes')
   return (
     <Box
       component="aside"
@@ -49,7 +50,10 @@ function AdminSidebar() {
             <ListItemText primary="사용자 관리" />
           </ListItemButton>
           
-          <ListItemButton sx={{borderRadius: 1}}>
+          <ListItemButton
+            selected={isCodesActive}
+            onClick={() => navigate('/admin/codes')}
+            sx={{borderRadius: 1}}>
             <ListItemIcon>
               <AccountTreeIcon />
             </ListItemIcon>

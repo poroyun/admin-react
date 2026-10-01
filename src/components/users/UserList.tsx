@@ -11,7 +11,7 @@ function UserList({ users }: UserListProps) {
 
   return (
     <Box
-      className="overflow-hidden rounded-3xl"
+      className="overflow-hidden"
       sx={{
         bgcolor: "background.paper",
         border: 1,
