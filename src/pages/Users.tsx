@@ -30,7 +30,6 @@ function Users() {
           <PageHeaderRight>
             <Button
               variant="contained"
-              size="small"
               type="button"
               onClick={() => navigate('/admin/users/new')}
             >

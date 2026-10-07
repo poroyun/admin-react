@@ -85,6 +85,13 @@
       "name": "일반사용자",
       "parentId": "5",
       "description": "일반 사용자 권한"
+    },
+    {
+      "code": "SUSPENDED",
+      "name": "정지",
+      "description": "이용 정지 회원",
+      "parentId": "1",
+      "id": "-y6DyFWdZP4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
